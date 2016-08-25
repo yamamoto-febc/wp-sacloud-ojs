@@ -1,0 +1,5 @@
+.env
+.data
+composer.lock
+composer.phar
+vendor

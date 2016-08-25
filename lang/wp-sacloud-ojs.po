@@ -1,0 +1,175 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"POT-Creation-Date: 2016-08-25 14:22+0900\n"
+"PO-Revision-Date: 2016-08-25 18:17+0900\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: ja\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.8.8\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Poedit-KeywordsList: _e;__\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-SearchPath-0: lang\n"
+"X-Poedit-SearchPath-1: tpl\n"
+"X-Poedit-SearchPath-2: wp-sacloud-ojs.php\n"
+
+#: tpl/setting.php:13
+msgid "Resynchronization result."
+msgstr "Resynchronization result."
+
+#: tpl/setting.php:22
+msgid "Setting SakuraCloud ObjectStorage"
+msgstr "Setting SakuraCloud ObjectStorage"
+
+#: tpl/setting.php:24
+msgid ""
+"Please Input the API tokens for the SakuraCloud ObjectStorage. No account? "
+"Let's "
+msgstr ""
+"Please Input the API tokens for the SakuraCloud ObjectStorage. No account? "
+"Let's "
+
+#: tpl/setting.php:24
+msgid "https://secure.sakura.ad.jp/member-regist/input"
+msgstr "https://secure.sakura.ad.jp/member-regist/input"
+
+#: tpl/setting.php:24
+msgid "signup"
+msgstr "[signup]"
+
+#: tpl/setting.php:31
+msgid "ObjectStorage AccessKey"
+msgstr "ObjectStorage AccessKey"
+
+#: tpl/setting.php:41
+msgid "ObjectStorage Secret"
+msgstr "ObjectStorage Secret"
+
+#: tpl/setting.php:51
+msgid "Bucket Name"
+msgstr "Bucket Name"
+
+#: tpl/setting.php:61
+msgid "Container Name"
+msgstr "Container Name"
+
+#: tpl/setting.php:70
+msgid "Use cache"
+msgstr "Use cache"
+
+#: tpl/setting.php:74
+msgid "Use Cache URL"
+msgstr "Use Cache URL"
+
+#: tpl/setting.php:80
+msgid "Check the connection"
+msgstr "Check the connection"
+
+#: tpl/setting.php:86
+msgid "File Types"
+msgstr "File Types"
+
+#: tpl/setting.php:89
+msgid "Extensions"
+msgstr "Extensions"
+
+#: tpl/setting.php:96
+msgid ""
+"The media files that has these extensions will be uploaded to the Object "
+"Storage. You can use comma separated format to specify more than "
+"one(Example: \"png,jpg,gif,mov,wmv\")."
+msgstr ""
+"The media files that has these extensions will be uploaded to the Object "
+"Storage. You can use comma separated format to specify more than "
+"one(Example: \"png,jpg,gif,mov,wmv\")."
+
+#: tpl/setting.php:97
+msgid "If this field is blank, Everything will be uploaded."
+msgstr "If this field is blank, Everything will be uploaded."
+
+#: tpl/setting.php:103
+msgid "Synchronization options"
+msgstr "Synchronization options"
+
+#: tpl/setting.php:109
+msgid ""
+"Delete the object from the object storage when the library file is deleted."
+msgstr ""
+"Delete the object from the object storage when the library file is deleted."
+
+#: tpl/setting.php:125
+msgid "Resynchronization"
+msgstr "Resynchronization"
+
+#: tpl/setting.php:127
+msgid ""
+"Resynchronization all media files to the Object Storage. It may take a long "
+"time."
+msgstr ""
+"Resynchronization all media files to the Object Storage. It may take a long "
+"time."
+
+#: wp-sacloud-ojs.php:26
+msgid "SakuraCloud ObjectStorage"
+msgstr "SakuraCloud ObjectStorage"
+
+#~ msgid "API Account"
+#~ msgstr "APIアカウント名"
+
+#~ msgid "API Password"
+#~ msgstr "APIパスワード"
+
+#~ msgid "Tenant ID"
+#~ msgstr "テナントID"
+
+#~ msgid "Auth URL"
+#~ msgstr "Auth URL"
+
+#~ msgid "Region"
+#~ msgstr "リージョン"
+
+#~ msgid "Service Name"
+#~ msgstr "サービス名"
+
+#~ msgid ""
+#~ "Container name that media files is uploaded. If the container not found, "
+#~ "It will create automatically."
+#~ msgstr ""
+#~ "メディアファイルが格納させるコンテナ名を指定します。コンテナが存在しない場"
+#~ "合は自動的に作成されます。"
+
+#~ msgid "The plugin will set the ACL to allow public access."
+#~ msgstr ""
+#~ "コンテナにはプラグインによって自動的に公開アクセス権が付与されます。"
+
+#~ msgid ""
+#~ "Type the API informations for the ConoHa Object storage. No account? "
+#~ "Let's "
+#~ msgstr ""
+#~ "ConoHaオブジェクトストレージ(もしくはOpenStackシステム)のAPI情報を入力して"
+#~ "ください。アカウントをお持ちで無い場合はサインアップしてください。"
+
+#~ msgid "https://www.conoha.jp/en/"
+#~ msgstr "https://www.conoha.jp/"
+
+#~ msgid "Setting ConoHa Object Sync"
+#~ msgstr "ConoHa Object Sync設定"
+
+#~ msgid ""
+#~ "The media files that has these extensions will be uploaded to the Object "
+#~ "Storage. You can use comma separated format to specify more than "
+#~ "one(Example: 'png,jpg,gif,mov,wmv')."
+#~ msgstr ""
+#~ "アップロードする拡張子を指定します。拡張子は半角カンマ区切りで複数指定可能"
+#~ "です(例: png,jpg,gif,mov,wmv)。"
+
+#~ msgid ""
+#~ "Delete the uploaded file from the local storage after a successful upload "
+#~ "to the object storage."
+#~ msgstr ""
+#~ "オブジェクトストレージへのアップロードが成功した場合、ローカルからファイル"
+#~ "を削除する。"

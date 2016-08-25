@@ -1,0 +1,6 @@
+version: '2'
+
+services:
+  s3cmd:
+    image: sacloud/s3cmd
+    env_file: .env
