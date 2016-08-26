@@ -336,11 +336,11 @@ function __upload_object($filepath) {
     if(is_readable($filepath)) {
         $fp = fopen($filepath, 'r');
         $object_name = __generate_object_name_from_path($filepath);
-        $client->putObject([
+        $client->putObject(array(
             'Bucket' => $bucket,
             'Key' => $object_name,
             'Body' => $fp
-        ]) ;
+        )) ;
     } else {
         return true;
     }
@@ -355,10 +355,10 @@ function __head_object($object_name) {
     $client = __get_object_store_service();
 
     try {
-        $object = $client->headObject([
+        $object = $client->headObject(array(
             'Bucket' => $bucket,
             'Key' => $object_name,
-        ]);
+        ));
         return $object;
 
     } catch(Exception $ex) {
@@ -373,10 +373,10 @@ function __delete_object($filepath) {
     $object_name = __generate_object_name_from_path($filepath);
 
     try {
-        $object = $client->deleteObject([
+        $object = $client->deleteObject(array(
             'Bucket' => $bucket,
             'Key' => $object_name,
-        ]);
+        ));
         return $object;
 
     } catch(Exception $ex) {
@@ -405,15 +405,15 @@ function __get_object_store_service($accessKey = null ,$secret = null ,$bucket =
         $baseHost = get_option('sacloudojs-endpoint-host');
         $pref = $useSSL == '1' ? "https://" : "http://";
 
-        $client = S3Client::factory([
+        $client = S3Client::factory(array(
             'key'    => $accessKey,
             'secret' => $secret,
             'base_url'=> $pref . $baseHost
-        ]);
+        ));
 
-        $client->headBucket([
+        $client->headBucket(array(
             'Bucket' => $bucket
-        ]);
+        ));
     }
     return $client;
 }
