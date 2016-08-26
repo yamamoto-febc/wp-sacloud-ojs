@@ -1,5 +1,6 @@
-=== さくらのクラウド オブジェクトストレージ プラグイン ===
+=== wp-sacloud-ojs ===
 Contributors: yamamotofebc
+Donate link:
 Tags: SakuraCloud, object storage, さくらのクラウド, さくらインターネット, オブジェクトストレージ
 Requires at least: 4.5.3
 Tested up to: 4.6.0
@@ -7,7 +8,7 @@ Stable tag: 0.0.1
 License: GPLv2 or later.
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-WordPressのメディアファイル(画像など)をさくらのクラウドのオブジェクトストレージで扱うためのWordPressプラグイン
+WordPressのメディアファイル(画像など)をさくらのクラウドのオブジェクトストレージで扱うためのプラグイン
 
 == Description ==
 
@@ -35,16 +36,15 @@ WordPressの管理画面からメディアを追加すると、自動的にオ�
 
 ダッシュボードの『プラグイン新規追加』からの追加も可能です。
 
-== Frequently asked questions ==
+== Frequently Asked Questions ==
 
 == Screenshots ==
-
-1. screenshot-2.png
+1. screenshot-1.png
 
 == Changelog ==
 
 0.0.1 : First release.
 
-== Upgrade notice ==
+== Upgrade Notice ==
 
 == Arbitrary section 1 ==

@@ -12,7 +12,7 @@ WordPressの管理画面からメディアを追加すると、自動的にオ�
 
 ## スクリーンショット
 
-![screenshot-2.png](screenshot-2.png)
+![screenshot-1.png](screenshot-1.png)
 
 
 ## インストール
