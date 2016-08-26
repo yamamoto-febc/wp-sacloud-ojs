@@ -38,6 +38,9 @@ WordPressの管理画面からメディアを追加すると、自動的にオ�
 
 == Frequently Asked Questions ==
 
+お問い合わせはGitHubのIssueにてお願い致します。
+https://github.com/yamamoto-febc/wp-sacloud-ojs
+
 == Screenshots ==
 1. screenshot-1.png
 
