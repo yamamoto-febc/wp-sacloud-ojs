@@ -7,7 +7,7 @@
  * Author: Kazumichi Yamamoto
  * Author URI: https://github.com/yamamoto-febc
  * Text Domain: wp-sacloud-ojs
- * Version: 0.0.1
+ * Version: 0.0.2
  * License: GPLv2
 */
 
@@ -121,7 +121,7 @@ function sacloudojs_connect_test()
     }
 }
 
-// TODO Resync
+// Resync
 function sacloudojs_resync() {
     $args = array(
         'post_type' => 'attachment',
@@ -142,27 +142,17 @@ function sacloudojs_resync() {
     foreach($attachments as $attach) {
         $path = get_attached_file($attach->ID);
         $name = __generate_object_name_from_path($path);
-        $obj = __head_object($name);
+        $metadata = wp_generate_attachment_metadata( $attach->ID, $path );
 
-        $do_upload = false;
-        if( ! $obj || ! file_exists($path)) {
-            $do_upload = true;
-
-        } else {
-
-            $mod1 = new DateTime($obj['LastModified']);
-            $mod2 = new DateTime("@".filemtime($path));
-
-            $d = $mod2->diff($mod1);
-            if($d->invert === 1) {
-                $do_upload = true;
-            }
+        if ( empty( $metadata ) || is_wp_error( $metadata) ){
+            $retval[$name] = false;
+            continue;
         }
 
-        if( $do_upload) {
-            $retval[$name] = sacloudojs_upload_file($attach->ID);
-        } else {
-            $retval[$name] = null;
+        $retval[$name] = sacloudojs_upload_file($attach->ID);
+        if ($retval[$name]) {
+            //regenerage thumbs.
+            wp_update_attachment_metadata( $attach->ID, $metadata );
         }
     }
     return $retval;

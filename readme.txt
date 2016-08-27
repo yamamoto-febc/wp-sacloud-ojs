@@ -4,7 +4,7 @@ Donate link:
 Tags: SakuraCloud, object storage, さくらのクラウド, さくらインターネット, オブジェクトストレージ
 Requires at least: 4.5.3
 Tested up to: 4.6.0
-Stable tag: 0.0.1
+Stable tag: 0.0.2
 License: GPLv2 or later.
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -22,11 +22,14 @@ WordPressの管理画面からメディアを追加すると、自動的にオ�
 
 さくらのクラウド オブジェクトストレージの機能である、SSL配信、キャッシュ配信にも対応しています。
 
-
 = Features =
 
 * メディアファイルをオブジェクトストレージに自動でアップロード
 * メディアファイルのURLをオブジェクトストレージからの直接配信に書き換え
+
+= 使い方とサポート =
+
+[GitHub](https://github.com/yamamoto-febc/wp-sacloud-ojs/tree/master/docs)では、プラグインのインストール方法や設定方法などを掲載しています。
 
 == Installation ==
 
@@ -46,7 +49,9 @@ https://github.com/yamamoto-febc/wp-sacloud-ojs
 
 == Changelog ==
 
-0.0.1 : First release.
+0.0.2 : 再同期時にサムネイルを生成する機能追加
+
+0.0.1 : 初回リリース
 
 == Upgrade Notice ==
 

@@ -57,6 +57,8 @@
 
 						</td>
 				</tr>
+<?php
+/*
 				<tr>
 						<th><?php _e('Container Name', 'wp-sacloud-ojs') ?>:</th>
 						<td>
@@ -66,6 +68,8 @@
 																				 ); ?>" class="regular-text code"/>
 						</td>
 				</tr>
+ */
+?>
 				<tr>
 					<th><?php _e('Use SSL', 'wp-sacloud-ojs') ?>:</th>
 					<td >

@@ -1,5 +1,7 @@
 # WordPress plugin for SakuraCloud ObjectStorage.
 
+![eye-catch.jpg](docs/images/eye-catch.jpg)
+
 WordPressのメディアファイル(画像など)をさくらのクラウドのオブジェクトストレージで扱うためのWordPressプラグインです。
 
 WordPressの管理画面からメディアを追加すると、自動的にオブジェクトストレージにアップロードを行います。
@@ -18,7 +20,7 @@ WordPressの管理画面からメディアを追加すると、自動的にオ�
 ## インストール
 
 WordPressの管理ページからインストール可能です。
-
+詳細は[インストール/設定](docs/README.md)を参照してください。
 
 ## インストール(手動)
 
