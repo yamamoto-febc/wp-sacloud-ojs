@@ -7,7 +7,7 @@
  * Author: Kazumichi Yamamoto
  * Author URI: https://github.com/yamamoto-febc
  * Text Domain: wp-sacloud-ojs
- * Version: 0.0.2
+ * Version: 0.0.3
  * License: GPLv2
 */
 
@@ -189,12 +189,25 @@ function sacloudojs_thumb_upload($metadatas) {
     return $metadatas;
 }
 
+// Delete an object by file_id
+function sacloudojs_delete_object_by_id($file_id){
+    $path = get_attached_file($file_id);
+    if( ! __file_has_upload_extensions($path)) {
+        return true;
+    }
+
+    return __delete_object($path);
+}
+
 // Delete an object
 function sacloudojs_delete_object($filepath) {
     if( ! __file_has_upload_extensions($filepath)) {
         return true;
     }
-    return __delete_object($filepath);
+    $res = __delete_object($filepath);
+    @unlink($filepath);
+    return $res;
+
 }
 
 
@@ -248,7 +261,7 @@ add_action('wp_ajax_sacloudojs_connect_test', 'sacloudojs_connect_test');
 
 add_action('add_attachment', 'sacloudojs_upload_file');
 add_action('edit_attachment', 'sacloudojs_upload_file');
-add_action('delete_attachment', 'sacloudojs_delete_object');
+add_action('delete_attachment', 'sacloudojs_delete_object_by_id');
 add_filter('wp_update_attachment_metadata', 'sacloudojs_thumb_upload');
 
 if(get_option("sacloudojs-delobject") == 1) {
