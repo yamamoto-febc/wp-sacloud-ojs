@@ -22,7 +22,7 @@ use Aws\S3\S3Client;
 use Guzzle\Http\Exception\ClientErrorResponseException;
 
 function add_pages() {
-    $r = add_submenu_page('options-general.php', __("SakuraCloud ObjectStorage" , 'wp-sacloud-ojs'), __("SakuraCloud ObjectStorage" , 'wp-sacloud-ojs'), 8, __FILE__, 'option_page');
+    $r = add_submenu_page('options-general.php', __("SakuraCloud ObjectStorage" , 'wp-sacloud-ojs'), __("SakuraCloud ObjectStorage" , 'wp-sacloud-ojs'), 'manage_options', __FILE__, 'option_page');
 }
 
 function option_page() {
