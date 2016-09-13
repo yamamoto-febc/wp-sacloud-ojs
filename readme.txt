@@ -4,7 +4,7 @@ Donate link:
 Tags: SakuraCloud, object storage, さくらのクラウド, さくらインターネット, オブジェクトストレージ
 Requires at least: 4.5.3
 Tested up to: 4.6.0
-Stable tag: 0.0.4
+Stable tag: 0.0.5
 License: GPLv2 or later.
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -48,6 +48,8 @@ https://github.com/yamamoto-febc/wp-sacloud-ojs
 1. screenshot-1.png
 
 == Changelog ==
+
+0.0.5 : WP-CLI対応、オプション値の内部構造変更、アップロード後のファイル削除オプション対応
 
 0.0.4 : メディアファイル削除時のフィルタロジック修正
 

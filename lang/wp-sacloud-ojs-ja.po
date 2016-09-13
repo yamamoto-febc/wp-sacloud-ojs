@@ -1,31 +1,55 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2016-08-25 18:09+0900\n"
-"PO-Revision-Date: 2016-08-25 18:09+0900\n"
+"POT-Creation-Date: 2016-09-13 22:23+0900\n"
+"PO-Revision-Date: 2016-09-13 22:24+0900\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: ja\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.8.8\n"
+"X-Generator: Poedit 1.8.9\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Poedit-KeywordsList: _e;__\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-SearchPath-0: lang\n"
 "X-Poedit-SearchPath-1: tpl\n"
 "X-Poedit-SearchPath-2: wp-sacloud-ojs.php\n"
+"X-Poedit-SearchPath-3: classes\n"
+"X-Poedit-SearchPath-4: wp-cli.php\n"
 
-#: tpl/setting.php:13
-msgid "Resynchronization result."
-msgstr "再同期結果"
+#: classes/Options.php:149 classes/Options.php:155 classes/Options.php:161
+#, php-format
+msgid "%s is required."
+msgstr "%sを入力してください"
 
-#: tpl/setting.php:22
+#: classes/Options.php:149 classes/Options.php:181
+msgid "AccessKey"
+msgstr "アクセスキーID"
+
+#: classes/Options.php:155 classes/Options.php:194
+msgid "Secret"
+msgstr "シークレットアクセスキー"
+
+#: classes/Options.php:161 classes/Options.php:206
+msgid "Bucket"
+msgstr "バケット"
+
+#: classes/Options.php:181 classes/Options.php:194 classes/Options.php:206
+#, php-format
+msgid "%s is too long."
+msgstr "%sが長すぎます"
+
+#: classes/Options.php:225 wp-cli.php:28
+msgid "API Token Authentication error"
+msgstr "入力されたAPIトークンでの認証に失敗しました"
+
+#: tpl/setting.php:5
 msgid "Setting SakuraCloud ObjectStorage"
 msgstr "さくらのクラウド オブジェクトストレージ設定"
 
-#: tpl/setting.php:24
+#: tpl/setting.php:7
 msgid ""
 "Please Input the API tokens for the SakuraCloud ObjectStorage. No account? "
 "Let's "
@@ -33,86 +57,126 @@ msgstr ""
 "さくらのクラウド オブジェクトストレージのAPIトークン情報を入力してください。"
 "アカウントをお持ちでない場合は会員登録を行ってください。"
 
-#: tpl/setting.php:24
+#: tpl/setting.php:8
 msgid "https://secure.sakura.ad.jp/member-regist/input"
 msgstr "https://secure.sakura.ad.jp/member-regist/input"
 
-#: tpl/setting.php:24
+#: tpl/setting.php:9
 msgid "signup"
 msgstr "[会員登録]"
 
-#: tpl/setting.php:31
+#: tpl/setting.php:15
+msgid "Basic settings"
+msgstr "基本設定"
+
+#: tpl/setting.php:18
 msgid "ObjectStorage AccessKey"
 msgstr "アクセスキーID"
 
-#: tpl/setting.php:41
+#: tpl/setting.php:28
 msgid "ObjectStorage Secret"
 msgstr "シークレットアクセスキー"
 
-#: tpl/setting.php:51
+#: tpl/setting.php:38
 msgid "Bucket Name"
 msgstr "バケットの名前"
 
-#: tpl/setting.php:61
-msgid "Container Name"
-msgstr "コンテナ名"
-
-#: tpl/setting.php:70
+#: tpl/setting.php:49
 msgid "Use SSL"
 msgstr "SSL"
 
-#: tpl/setting.php:74
+#: tpl/setting.php:53
 msgid "Use SSL protocol"
 msgstr "SSLを利用する"
 
-#: tpl/setting.php:79
+#: tpl/setting.php:58
 msgid "Use cache"
 msgstr "キャッシュ"
 
-#: tpl/setting.php:83
+#: tpl/setting.php:62
 msgid "Use Cache URL"
 msgstr "キャッシュ配信URLを利用する"
 
-#: tpl/setting.php:89
+#: tpl/setting.php:68
 msgid "Check the connection"
 msgstr "入力したAPIトークンでテスト接続"
 
-#: tpl/setting.php:94
-msgid "File Types"
-msgstr "ファイルタイプ"
+#: tpl/setting.php:74
+msgid "Advance settings"
+msgstr "高度な設定"
 
-#: tpl/setting.php:97
-msgid "Extensions"
-msgstr "拡張子リスト"
+#: tpl/setting.php:77
+msgid "Delete file"
+msgstr "ファイル削除"
 
-#: tpl/setting.php:104
-msgid ""
-"The media files that has these extensions will be uploaded to the Object "
-"Storage. You can use comma separated format to specify more than "
-"one(Example: \"png,jpg,gif,mov,wmv\")."
+#: tpl/setting.php:81
+msgid "Delete file on server"
+msgstr "アップロード完了時にファイルを削除する"
+
+#: tpl/setting.php:82
+msgid "Delete file on the WordPress server after uploaded to ObjectStorage"
 msgstr ""
-"アップロードする拡張子を指定します。拡張子は半角カンマ区切りで複数指定可能で"
-"す(例: png,jpg,gif,mov,wmv)。"
+"オブジェクトストレージにファイルをアップロードした後、WordPressサーバ上のファ"
+"イルを削除します。"
 
-#: tpl/setting.php:105
-msgid "If this field is blank, Everything will be uploaded."
-msgstr "空欄の場合は全てのファイル形式がアップロード対象となります。"
+#: wp-cli.php:37
+msgid "Uploaded all images to ObjectStorage."
+msgstr "アップロードが完了しました"
 
-#: tpl/setting.php:121
-msgid "Resynchronization"
-msgstr "再同期"
+#: wp-sacloud-ojs.php:63 wp-sacloud-ojs.php:73
+msgid "Settings"
+msgstr "設定"
 
-#: tpl/setting.php:123
-msgid ""
-"Resynchronization all media files to the Object Storage. It may take a long "
-"time."
-msgstr ""
-"サーバ上のメディアファイルを全てオブジェクトストレージにアップロードし直しま"
-"す。この実行には時間がかかる場合があります。"
+#: wp-sacloud-ojs.php:80
+msgid "ObjectStorage"
+msgstr "オブジェクトストレージ"
 
-#: wp-sacloud-ojs.php:25
-msgid "SakuraCloud ObjectStorage"
-msgstr "さくらのクラウド オブジェクトストレージ"
+#: wp-sacloud-ojs.php:122
+msgid "Connection was Successfully."
+msgstr "接続に成功しました"
+
+#: wp-sacloud-ojs.php:129
+msgid "Connection Error"
+msgstr "接続に失敗しました"
+
+#~ msgid "Uploading all images to ObjectStorage."
+#~ msgstr "全ての画像をオブジェクトストレージにアップロードします。"
+
+#~ msgid "Resynchronization result."
+#~ msgstr "再同期結果"
+
+#~ msgid "Container Name"
+#~ msgstr "コンテナ名"
+
+#~ msgid "File Types"
+#~ msgstr "ファイルタイプ"
+
+#~ msgid "Extensions"
+#~ msgstr "拡張子リスト"
+
+#~ msgid ""
+#~ "The media files that has these extensions will be uploaded to the Object "
+#~ "Storage. You can use comma separated format to specify more than "
+#~ "one(Example: \"png,jpg,gif,mov,wmv\")."
+#~ msgstr ""
+#~ "アップロードする拡張子を指定します。拡張子は半角カンマ区切りで複数指定可能"
+#~ "です(例: png,jpg,gif,mov,wmv)。"
+
+#~ msgid "If this field is blank, Everything will be uploaded."
+#~ msgstr "空欄の場合は全てのファイル形式がアップロード対象となります。"
+
+#~ msgid "Resynchronization"
+#~ msgstr "再同期"
+
+#~ msgid ""
+#~ "Resynchronization all media files to the Object Storage. It may take a "
+#~ "long time."
+#~ msgstr ""
+#~ "サーバ上のメディアファイルを全てオブジェクトストレージにアップロードし直し"
+#~ "ます。この実行には時間がかかる場合があります。"
+
+#~ msgid "SakuraCloud ObjectStorage"
+#~ msgstr "さくらのクラウド オブジェクトストレージ"
 
 #~ msgid "Synchronization options"
 #~ msgstr "同期オプション"
