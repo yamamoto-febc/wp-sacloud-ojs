@@ -34,11 +34,13 @@ function sacloudojs_start()
     add_filter('plugin_action_links_' . plugin_basename(__FILE__), 'sacloudojs_add_action_links');
 
     if (sacloudojs_client_auth()) {
+
         add_action('add_attachment', 'sacloudojs_upload_file');
         add_action('edit_attachment', 'sacloudojs_upload_file');
         add_action('delete_attachment', 'sacloudojs_delete_object_by_id');
-        add_filter('wp_update_attachment_metadata', 'sacloudojs_thumb_upload');
 
+        add_action("updated_postmeta", "sacloud_after_image_edit", 10, 4);
+        add_filter('wp_update_attachment_metadata', 'sacloudojs_thumb_upload');
 
         add_filter('wp_handle_upload_prefilter', 'sacloudojs_modify_uploadfilename');
 
@@ -59,9 +61,10 @@ function sacloudojs_start()
     }
 }
 
+
 function sacloudojs_show_incomplete_setting_notice()
 {
-    echo '<div class="message notice notice-error"><p>'. __('ObjectStorage settings is incompleted','wp-sacloud-ojs') .'<a href="options-general.php?page=wp-sacloud-ojs/wp-sacloud-ojs.php">[' . __("Settings", "wp-sacloud-ojs") . ']</a></p></div>';
+    echo '<div class="message notice notice-error"><p>' . __('ObjectStorage settings is incompleted', 'wp-sacloud-ojs') . '<a href="options-general.php?page=wp-sacloud-ojs/wp-sacloud-ojs.php">[' . __("Settings", "wp-sacloud-ojs") . ']</a></p></div>';
 }
 
 function sacloudojs_deactivate()
@@ -176,11 +179,17 @@ function sacloudojs_resync()
      */
     $attachments = apply_filters('sacloudojs_resync_targets', $attachments);
 
+    $dir = wp_upload_dir();
+
     $retval = array();
     foreach ($attachments as $attach) {
         $path = get_attached_file($attach->ID);
         $name = __generate_object_name_from_path($path);
         $metadata = wp_generate_attachment_metadata($attach->ID, $path);
+
+        $upload_dir = dirname($path);
+        $backup_metadatas = get_post_meta($attach->ID, "_wp_attachment_backup_sizes", false);
+
 
         if (empty($metadata) || is_wp_error($metadata)) {
             $retval[$name] = false;
@@ -192,12 +201,19 @@ function sacloudojs_resync()
         $retval[$name] = sacloudojs_upload_file($attach->ID);
         do_action('sacloudojs_resync_uploaded', $attach, $retval[$name]);
         if ($retval[$name]) {
-            //regenerage thumbs.
+            if (!empty($backup_metadatas)) {
+                foreach ($backup_metadatas as $meta) {
+                    foreach($meta as $thumb) {
+                        __upload_object($upload_dir . DIRECTORY_SEPARATOR . $thumb['file']);
+                    }
+                }
+            }
+            //regenerate thumbs.
             do_action('sacloudojs_resync_metadata_upload', $attach, $metadata);
             wp_update_attachment_metadata($attach->ID, $metadata);
             do_action('sacloudojs_resync_metadata_uploaded', $attach, $metadata);
-        }
 
+        }
     }
     return $retval;
 }
@@ -206,7 +222,6 @@ function sacloudojs_resync()
 function sacloudojs_upload_file($file_id)
 {
     $path = get_attached_file($file_id);
-
     return __upload_object($path);
 }
 
@@ -228,9 +243,8 @@ function sacloudojs_thumb_upload($metadatas)
     return $metadatas;
 }
 
-function sacloudojs_delete_file_with_thumb($metadatas)
+function sacloudojs_delete_file_with_thumb($metadatas,$file_id)
 {
-
     $dir = wp_upload_dir();
     $base_file = $dir['basedir'] . DIRECTORY_SEPARATOR . $metadatas['file'];
     $upload_dir = dirname($base_file);
@@ -239,6 +253,15 @@ function sacloudojs_delete_file_with_thumb($metadatas)
     if (isset($metadatas['sizes'])) {
         foreach ($metadatas['sizes'] as $thumb) {
             $files[] = $upload_dir . DIRECTORY_SEPARATOR . $thumb['file'];
+        }
+    }
+
+    $backup_metadatas = get_post_meta($file_id, "_wp_attachment_backup_sizes", false);
+    if (!empty($backup_metadatas)) {
+        foreach ($backup_metadatas as $meta) {
+            foreach($meta as $thumb) {
+                $files[] = $upload_dir . DIRECTORY_SEPARATOR . $thumb['file'];
+            }
         }
     }
 
@@ -255,6 +278,7 @@ function sacloudojs_delete_object_by_id($file_id)
 {
 
     $metadatas = wp_get_attachment_metadata($file_id);
+
     $dir = wp_upload_dir();
     $base_file = $dir['basedir'] . DIRECTORY_SEPARATOR . $metadatas['file'];
     $upload_dir = dirname($base_file);
@@ -267,6 +291,16 @@ function sacloudojs_delete_object_by_id($file_id)
         }
     }
 
+    // add _wp_attachment_backup_sizes from wp_postmeta
+    $backup_metadatas = get_post_meta($file_id, "_wp_attachment_backup_sizes", false);
+    if (!empty($backup_metadatas)) {
+        foreach ($backup_metadatas as $meta) {
+            foreach($meta as $thumb) {
+                $files[] = $upload_dir . DIRECTORY_SEPARATOR . $thumb['file'];
+            }
+        }
+    }
+
     foreach ($files as $file) {
         __delete_object($file);
     }
@@ -274,8 +308,18 @@ function sacloudojs_delete_object_by_id($file_id)
 
 function sacloudojs_delete_object_after_upload($filepath, $object_name, $client, $result)
 {
-    add_filter('wp_update_attachment_metadata', 'sacloudojs_delete_file_with_thumb', 999999);
+    add_filter('wp_update_attachment_metadata', 'sacloudojs_delete_file_with_thumb', 999999 , 2);
 }
+
+function sacloud_after_image_edit($meta_id, $object_id, $meta_key, $meta_value)
+{
+    if ($meta_key === '_wp_attached_file'){
+        $dir = wp_upload_dir();
+        $file = $dir['basedir'] . DIRECTORY_SEPARATOR . $meta_value;
+        return __upload_object($file);
+    }
+}
+
 
 // Return object URL
 function sacloudojs_object_storage_url($wpurl)
@@ -353,13 +397,13 @@ function __upload_object($filepath)
                 'Key' => $object_name,
                 'Body' => $fp
             ));
-        }catch(Exception $ex){
+        } catch (Exception $ex) {
             do_action("sacloudojs_object_uploaded", $filepath, $object_name, $client, false);
             return false;
         }
         do_action("sacloudojs_object_uploaded", $filepath, $object_name, $client, true);
     } else {
-        do_action("sacloudojs_object_missing", $filepath, $object_name, $client);
+        do_action("sacloudojs_object_missing", $filepath, $object_name, $client , false);
         return true;
     }
 

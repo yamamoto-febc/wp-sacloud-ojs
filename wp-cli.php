@@ -30,7 +30,7 @@ if ( ! class_exists( 'Sacloud_Ojs_WP_CLI_Command' ) ) {
             }
 
             add_action("sacloudojs_object_uploaded" , array(get_called_class() , 'file_uploaded') , 10 , 4);
-            add_action("sacloudojs_object_missing" , array(get_called_class() , 'file_uploaded') , 10 , 3);
+            add_action("sacloudojs_object_missing" , array(get_called_class() , 'file_uploaded') , 10 , 4);
             add_action("sacloudojs_resync_metadata_error" , array(get_called_class() , 'file_metadata_error')  , 10 , 2);
 
             sacloudojs_resync();
