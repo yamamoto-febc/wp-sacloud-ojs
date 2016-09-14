@@ -8,6 +8,7 @@
   - [インストール](#インストール)
   - [設定](#設定)
   - [WP-CLIサポートについて](#wp-cliサポートについて)
+  - [既存WordPressサイトへの導入手順の例](#既存WordPressサイトへの導入手順の例)
 
 ## 事前準備
 
@@ -105,3 +106,8 @@ sap-sacloud-ojsを有効にすると、wp-cliに対し`sacloud-ojs`というコ�
     wp sacloud-ojs upload-all
   
 
+## 既存WordPressサイトへの導入手順の例
+
+以下のページを参照ください。
+
+[既存WordPressサイトへの導入手順の例](Migration.md)

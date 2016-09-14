@@ -57,9 +57,9 @@
         <tr>
             <th><?php _e('Use cache', 'wp-sacloud-ojs') ?>:</th>
             <td>
-                <input id="use-cache" type="checkbox" name="sacloudojs-options[UseCache]"
+                <input id="sacloud-use-cache" type="checkbox" name="sacloudojs-options[UseCache]"
                        value="1" <?php checked(Wp_Sacloud_Ojs\Options::$Instance->UseCache, 1); ?> />
-                <label for="use-cache"><?php _e('Use Cache URL', 'wp-sacloud-ojs'); ?></label>
+                <label for="sacloud-use-cache"><?php _e('Use Cache URL', 'wp-sacloud-ojs'); ?></label>
             </td>
         </tr>
         <tr>

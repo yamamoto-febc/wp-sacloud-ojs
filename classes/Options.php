@@ -105,14 +105,10 @@ class Options
         return $pref . $host . '/' . $bucket . $objectName;
     }
 
-    public function getObjectStorageHostURL()
+    public function getObjectStorageHostURL($useSSL)
     {
-        $pref = $this->UseSSL === '1' ? "https://" : "http://";
+        $pref = $useSSL === '1' ? "https://" : "http://";
         $host = $this->EndpointHost;
-        if ($this->UseCache === '1') {
-            $host = $this->Bucket . "." . self::SACLOUD_OJS_CACHED_ENDPOINT_HOSTNAME;
-        }
-
         return $pref . $host;
 
     }
@@ -250,7 +246,7 @@ class Options
             'EndpointHost' => self::SACLOUD_OJS_ENDPOINT_HOSTNAME,
             'UseCache' => '0',
             'Container' => '',
-            'DeleteObject' => '1',
+            'DeleteObject' => '0',
         );
     }
 

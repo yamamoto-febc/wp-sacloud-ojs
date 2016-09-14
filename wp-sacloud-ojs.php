@@ -42,8 +42,6 @@ function sacloudojs_start()
         add_action("updated_postmeta", "sacloud_after_image_edit", 10, 4);
         add_filter('wp_update_attachment_metadata', 'sacloudojs_thumb_upload');
 
-        add_filter('wp_handle_upload_prefilter', 'sacloudojs_modify_uploadfilename');
-
         add_filter('wp_get_attachment_url', 'sacloudojs_object_storage_url');
 
 
@@ -203,7 +201,7 @@ function sacloudojs_resync()
         if ($retval[$name]) {
             if (!empty($backup_metadatas)) {
                 foreach ($backup_metadatas as $meta) {
-                    foreach($meta as $thumb) {
+                    foreach ($meta as $thumb) {
                         __upload_object($upload_dir . DIRECTORY_SEPARATOR . $thumb['file']);
                     }
                 }
@@ -243,7 +241,7 @@ function sacloudojs_thumb_upload($metadatas)
     return $metadatas;
 }
 
-function sacloudojs_delete_file_with_thumb($metadatas,$file_id)
+function sacloudojs_delete_file_with_thumb($metadatas, $file_id)
 {
     $dir = wp_upload_dir();
     $base_file = $dir['basedir'] . DIRECTORY_SEPARATOR . $metadatas['file'];
@@ -259,7 +257,7 @@ function sacloudojs_delete_file_with_thumb($metadatas,$file_id)
     $backup_metadatas = get_post_meta($file_id, "_wp_attachment_backup_sizes", false);
     if (!empty($backup_metadatas)) {
         foreach ($backup_metadatas as $meta) {
-            foreach($meta as $thumb) {
+            foreach ($meta as $thumb) {
                 $files[] = $upload_dir . DIRECTORY_SEPARATOR . $thumb['file'];
             }
         }
@@ -295,7 +293,7 @@ function sacloudojs_delete_object_by_id($file_id)
     $backup_metadatas = get_post_meta($file_id, "_wp_attachment_backup_sizes", false);
     if (!empty($backup_metadatas)) {
         foreach ($backup_metadatas as $meta) {
-            foreach($meta as $thumb) {
+            foreach ($meta as $thumb) {
                 $files[] = $upload_dir . DIRECTORY_SEPARATOR . $thumb['file'];
             }
         }
@@ -308,12 +306,12 @@ function sacloudojs_delete_object_by_id($file_id)
 
 function sacloudojs_delete_object_after_upload($filepath, $object_name, $client, $result)
 {
-    add_filter('wp_update_attachment_metadata', 'sacloudojs_delete_file_with_thumb', 999999 , 2);
+    add_filter('wp_update_attachment_metadata', 'sacloudojs_delete_file_with_thumb', 999999, 2);
 }
 
 function sacloud_after_image_edit($meta_id, $object_id, $meta_key, $meta_value)
 {
-    if ($meta_key === '_wp_attached_file'){
+    if ($meta_key === '_wp_attached_file') {
         $dir = wp_upload_dir();
         $file = $dir['basedir'] . DIRECTORY_SEPARATOR . $meta_value;
         return __upload_object($file);
@@ -334,16 +332,6 @@ function sacloudojs_object_storage_url($wpurl)
 
 }
 
-// add date prefix to the filename.
-function sacloudojs_modify_uploadfilename($file)
-{
-    $dir = wp_upload_dir();
-    $prefix = str_replace($dir['basedir'] . DIRECTORY_SEPARATOR, '', $dir['path']);
-    $prefix = str_replace(DIRECTORY_SEPARATOR, '-', $prefix);
-    $file['name'] = $prefix . '-' . $file['name'];
-    return $file;
-}
-
 // -------------------- internal functions --------------------
 
 // generate the object name from the filepath.
@@ -353,13 +341,15 @@ function __generate_object_name_from_path($path)
     $dir = wp_upload_dir();
     $name = basename($path);
     $name = str_replace($dir['basedir'] . DIRECTORY_SEPARATOR, '', $name);
-    $name = str_replace(DIRECTORY_SEPARATOR, '-', $name);
+
+    $prefix = str_replace($dir['basedir'] . DIRECTORY_SEPARATOR, '', $dir['path']) . DIRECTORY_SEPARATOR;
+
     $container_name = Wp_Sacloud_Ojs\Options::$Instance->Container;
     if ($container_name != "") {
         $container_name .= "/";
     }
 
-    return $container_name . $name;
+    return $container_name . $prefix . $name;
 }
 
 function __get_attachment_id_from_url($url)
@@ -403,7 +393,7 @@ function __upload_object($filepath)
         }
         do_action("sacloudojs_object_uploaded", $filepath, $object_name, $client, true);
     } else {
-        do_action("sacloudojs_object_missing", $filepath, $object_name, $client , false);
+        do_action("sacloudojs_object_missing", $filepath, $object_name, $client, false);
         return true;
     }
 
@@ -470,12 +460,18 @@ function __get_object_store_service($accessKey = null, $secret = null, $bucket =
         $client = S3Client::factory(array(
             'key' => $accessKey,
             'secret' => $secret,
-            'base_url' => Wp_Sacloud_Ojs\Options::$Instance->getObjectStorageHostURL()
+            'base_url' => Wp_Sacloud_Ojs\Options::$Instance->getObjectStorageHostURL($useSSL)
         ));
 
-        $client->headBucket(array(
-            'Bucket' => $bucket
-        ));
+        try {
+            $client->headBucket(array(
+                'Bucket' => $bucket
+            ));
+        } catch (Exception $ex) {
+            Wp_Sacloud_Ojs\Options::load();
+            throw $ex;
+        }
+        Wp_Sacloud_Ojs\Options::load();
     }
     return $client;
 }
