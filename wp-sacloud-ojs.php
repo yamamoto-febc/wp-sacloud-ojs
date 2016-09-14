@@ -1,9 +1,9 @@
 <?php
 
 /**
- * Plugin Name: SakuraCloud ObjectStorage Plugin
+ * Plugin Name: wp-sacloud-ojs
  * Plugin URI: https://github.com/yamamoto-febc/wp-sacloud-ojs
- * Description: SakuraCloud ObjectStorage Plugin is a simple plugin for WordPress that helps you to synchronizes media files with SakuraCloud Object Storage.
+ * Description: WordPressのメディアファイル(画像など)をさくらのクラウドのオブジェクトストレージで扱うためのプラグイン
  * Author: Kazumichi Yamamoto
  * Author URI: https://github.com/yamamoto-febc
  * Text Domain: wp-sacloud-ojs
@@ -19,6 +19,7 @@ use Aws\S3\S3Client;
 
 // -------------------- Register boot functions ---------------------
 register_deactivation_hook(__FILE__, 'sacloudojs_deactivate');
+register_uninstall_hook(__FILE__, 'sacloudojs_uninstall');
 add_action('init', 'sacloudojs_start');
 // ------------------------------------------------------------------
 
@@ -60,13 +61,19 @@ function sacloudojs_start()
 
 function sacloudojs_show_incomplete_setting_notice()
 {
-    echo '<div class="message notice notice-error"><p>オブジェクトストレージの設定が完了していません。<a href="options-general.php?page=wp-sacloud-ojs/wp-sacloud-ojs.php">[' . __("Settings", "wp-sacloud-ojs") . ']</a></p></div>';
+    echo '<div class="message notice notice-error"><p>'. __('ObjectStorage settings is incompleted','wp-sacloud-ojs') .'<a href="options-general.php?page=wp-sacloud-ojs/wp-sacloud-ojs.php">[' . __("Settings", "wp-sacloud-ojs") . ']</a></p></div>';
 }
 
 function sacloudojs_deactivate()
 {
+    //Wp_Sacloud_Ojs\Options::deactivate();
+}
+
+function sacloudojs_uninstall()
+{
     Wp_Sacloud_Ojs\Options::deactivate();
 }
+
 
 function sacloudojs_add_action_links($links)
 {

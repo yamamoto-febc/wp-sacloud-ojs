@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2016-09-13 22:23+0900\n"
-"PO-Revision-Date: 2016-09-13 22:24+0900\n"
+"POT-Creation-Date: 2016-09-14 10:07+0900\n"
+"PO-Revision-Date: 2016-09-14 10:07+0900\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: ja\n"
@@ -123,19 +123,23 @@ msgstr ""
 msgid "Uploaded all images to ObjectStorage."
 msgstr "アップロードが完了しました"
 
-#: wp-sacloud-ojs.php:63 wp-sacloud-ojs.php:73
+#: wp-sacloud-ojs.php:64
+msgid "ObjectStorage settings is incompleted"
+msgstr "オブジェクトストレージの設定が完了していません。"
+
+#: wp-sacloud-ojs.php:64 wp-sacloud-ojs.php:80
 msgid "Settings"
 msgstr "設定"
 
-#: wp-sacloud-ojs.php:80
+#: wp-sacloud-ojs.php:87
 msgid "ObjectStorage"
 msgstr "オブジェクトストレージ"
 
-#: wp-sacloud-ojs.php:122
+#: wp-sacloud-ojs.php:129
 msgid "Connection was Successfully."
 msgstr "接続に成功しました"
 
-#: wp-sacloud-ojs.php:129
+#: wp-sacloud-ojs.php:136
 msgid "Connection Error"
 msgstr "接続に失敗しました"
 
