@@ -17,32 +17,15 @@ WordPressの管理画面からメディアを追加すると、自動的にオ�
 ![screenshot-1.png](screenshot-1.png)
 
 
-## インストール
+## インストール/設定
 
 WordPressの管理ページからインストール可能です。
 詳細は[インストール/設定](docs/README.md)を参照してください。
 
-## インストール(手動)
+## 既存WordPressサイトへの導入
 
-手動でインストールする場合は次のようにしてください。
+[既存WordPressサイトへの導入手順の例](Migration.md)
 
-1. 以下のコマンドを実行してください。
-2. 管理画面の「プラグイン」メニューから有効化してください。
-
-```bash
-
-# Move into WordPress root
-cd [WORDPRESS_ROOT]/wp-content/plugins
-
-# Clone plugin repository
-git clone https://github.com/yamamoto-febc/wp-sacloud-ojs
-cd wp-sacloud-ojs
-
-# Install libraries. 
-curl -sS https://getcomposer.org/installer | php
-./composer.phar install
-
-```
 
 # License
 

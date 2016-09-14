@@ -111,3 +111,26 @@ sap-sacloud-ojsを有効にすると、wp-cliに対し`sacloud-ojs`というコ�
 以下のページを参照ください。
 
 [既存WordPressサイトへの導入手順の例](Migration.md)
+
+
+## (付録)手動インストール
+
+手動でインストールする場合は次のようにしてください。
+
+1. 以下のコマンドを実行してください。
+2. 管理画面の「プラグイン」メニューから有効化してください。
+
+```bash
+
+# Move into WordPress root
+cd [WORDPRESS_ROOT]/wp-content/plugins
+
+# Clone plugin repository
+git clone https://github.com/yamamoto-febc/wp-sacloud-ojs
+cd wp-sacloud-ojs
+
+# Install libraries. 
+curl -sS https://getcomposer.org/installer | php
+./composer.phar install
+
+```

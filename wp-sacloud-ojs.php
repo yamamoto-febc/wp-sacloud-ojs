@@ -7,7 +7,7 @@
  * Author: Kazumichi Yamamoto
  * Author URI: https://github.com/yamamoto-febc
  * Text Domain: wp-sacloud-ojs
- * Version: 0.0.5
+ * Version: 0.0.6
  * License: GPLv2
  */
 
