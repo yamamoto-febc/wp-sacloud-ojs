@@ -225,11 +225,13 @@ function sacloudojs_delete_file_with_thumb($metadatas)
 {
 
     $dir = wp_upload_dir();
-    $files = array($dir['basedir'] . DIRECTORY_SEPARATOR . $metadatas['file']);
+    $base_file = $dir['basedir'] . DIRECTORY_SEPARATOR . $metadatas['file'];
+    $upload_dir = dirname($base_file);
+    $files = array($base_file);
 
     if (isset($metadatas['sizes'])) {
         foreach ($metadatas['sizes'] as $thumb) {
-            $files[] = $dir['path'] . DIRECTORY_SEPARATOR . $thumb['file'];
+            $files[] = $upload_dir . DIRECTORY_SEPARATOR . $thumb['file'];
         }
     }
 
@@ -247,11 +249,14 @@ function sacloudojs_delete_object_by_id($file_id)
 
     $metadatas = wp_get_attachment_metadata($file_id);
     $dir = wp_upload_dir();
-    $files = array($dir['basedir'] . DIRECTORY_SEPARATOR . $metadatas['file']);
+    $base_file = $dir['basedir'] . DIRECTORY_SEPARATOR . $metadatas['file'];
+    $upload_dir = dirname($base_file);
+
+    $files = array($base_file);
 
     if (isset($metadatas['sizes'])) {
         foreach ($metadatas['sizes'] as $thumb) {
-            $files[] = $dir['path'] . DIRECTORY_SEPARATOR . $thumb['file'];
+            $files[] = $upload_dir . DIRECTORY_SEPARATOR . $thumb['file'];
         }
     }
 
