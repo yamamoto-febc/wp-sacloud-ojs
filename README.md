@@ -24,7 +24,7 @@ WordPressの管理ページからインストール可能です。
 
 ## 既存WordPressサイトへの導入
 
-[既存WordPressサイトへの導入手順の例](Migration.md)
+[既存WordPressサイトへの導入手順の例](docs/Migration.md)
 
 
 # License
