@@ -4,7 +4,7 @@ Donate link:
 Tags: SakuraCloud, object storage, さくらのクラウド, さくらインターネット, オブジェクトストレージ
 Requires at least: 4.5.3
 Tested up to: 4.6.1
-Stable tag: 0.0.6
+Stable tag: 0.0.7
 License: GPLv2 or later.
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -49,15 +49,17 @@ https://github.com/yamamoto-febc/wp-sacloud-ojs
 
 == Changelog ==
 
-0.0.6 : アップロード先の年月ディレクトリ対応、キャッシュ配信関連バグ修正、移行手順追加
+0.0.7 : [srcset属性のURL書き換え対応](https://github.com/yamamoto-febc/wp-sacloud-ojs/releases/tag/v0.0.7)
 
-0.0.5 : WP-CLI対応、オプション値の内部構造変更、アップロード後のファイル削除オプション対応
+0.0.6 : [アップロード先の年月ディレクトリ対応、キャッシュ配信関連バグ修正、移行手順追加](https://github.com/yamamoto-febc/wp-sacloud-ojs/releases/tag/v0.0.6)
 
-0.0.4 : メディアファイル削除時のフィルタロジック修正
+0.0.5 : [WP-CLI対応、オプション値の内部構造変更、アップロード後のファイル削除オプション対応](https://github.com/yamamoto-febc/wp-sacloud-ojs/releases/tag/v0.0.5)
 
-0.0.3 : メディアファイル削除時にuploadsディレクトリ内にファイルが残存するバグを修正
+0.0.4 : [メディアファイル削除時のフィルタロジック修正](https://github.com/yamamoto-febc/wp-sacloud-ojs/releases/tag/v0.0.4)
 
-0.0.2 : 再同期時にサムネイルを生成する機能追加
+0.0.3 : [メディアファイル削除時にuploadsディレクトリ内にファイルが残存するバグを修正](https://github.com/yamamoto-febc/wp-sacloud-ojs/releases/tag/v0.0.3)
+
+0.0.2 : [再同期時にサムネイルを生成する機能追加](https://github.com/yamamoto-febc/wp-sacloud-ojs/releases/tag/v0.0.2)
 
 0.0.1 : 初回リリース
 
