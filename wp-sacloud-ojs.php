@@ -43,7 +43,7 @@ function sacloudojs_start()
         add_filter('wp_update_attachment_metadata', 'sacloudojs_thumb_upload');
 
         add_filter('wp_get_attachment_url', 'sacloudojs_object_storage_url');
-
+        add_filter('wp_calculate_image_srcset', 'sacloudojs_calculate_image_srcset', 10, 5);
 
         if (Wp_Sacloud_Ojs\Options::$Instance->DeleteObject === '1') {
             add_action("sacloudojs_object_uploaded", "sacloudojs_delete_object_after_upload", 10, 4);
@@ -332,6 +332,21 @@ function sacloudojs_object_storage_url($wpurl)
 
 }
 
+// Return object URL(srcset)
+function sacloudojs_calculate_image_srcset($sources, $size_array, $image_src, $image_meta, $attachment_id)
+{
+    foreach ($sources as &$src) {
+        $url = $src['url'];
+
+        $object_name = __generate_object_name_from_url($url);
+        if ($object_name) {
+            $url = Wp_Sacloud_Ojs\Options::$Instance->getObjectURLByName($object_name);
+            $src['url'] = $url;
+        }
+    }
+    return $sources;
+}
+
 // -------------------- internal functions --------------------
 
 // generate the object name from the filepath.
@@ -351,6 +366,24 @@ function __generate_object_name_from_path($path)
 
     return $container_name . $prefix . $name;
 }
+
+function __generate_object_name_from_url($url)
+{
+
+    $dir = wp_upload_dir();
+    $name = str_replace($dir['url'] . DIRECTORY_SEPARATOR , '' , $url);
+
+    $prefix = str_replace($dir['baseurl'] . DIRECTORY_SEPARATOR, '', $dir['url']) . DIRECTORY_SEPARATOR;
+
+    $container_name = Wp_Sacloud_Ojs\Options::$Instance->Container;
+    if ($container_name != "") {
+        $container_name .= "/";
+    }
+
+    return $container_name . $prefix . $name;
+
+}
+
 
 function __get_attachment_id_from_url($url)
 {
