@@ -5,7 +5,7 @@
 <h2><?php _e('Setting SakuraCloud ObjectStorage', "wp-sacloud-ojs"); ?></h2>
 
 <p><?php _e("Please Input the API tokens for the SakuraCloud ObjectStorage. No account? Let's ", 'wp-sacloud-ojs'); ?><a
-        href="<?php _e('https://secure.sakura.ad.jp/member-regist/input', 'wp-sacloud-ojs'); ?>"
+        href="<?php _e('https://secure.sakura.ad.jp/signup3/member-register/input.html', 'wp-sacloud-ojs'); ?>"
         target="_blank"><?php _e('signup', 'wp-sacloud-ojs'); ?></a></p>
 
 <form method="post" action="options.php">

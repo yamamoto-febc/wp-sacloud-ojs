@@ -1,15 +1,15 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2016-09-14 10:07+0900\n"
-"PO-Revision-Date: 2016-09-14 10:07+0900\n"
+"POT-Creation-Date: 2016-11-28 09:26+0900\n"
+"PO-Revision-Date: 2016-11-28 09:40+0900\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: ja\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.8.9\n"
+"X-Generator: Poedit 1.8.11\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Poedit-KeywordsList: _e;__\n"
 "X-Poedit-Basepath: ..\n"
@@ -19,29 +19,29 @@ msgstr ""
 "X-Poedit-SearchPath-3: classes\n"
 "X-Poedit-SearchPath-4: wp-cli.php\n"
 
-#: classes/Options.php:149 classes/Options.php:155 classes/Options.php:161
+#: classes/Options.php:145 classes/Options.php:151 classes/Options.php:157
 #, php-format
 msgid "%s is required."
 msgstr "%sを入力してください"
 
-#: classes/Options.php:149 classes/Options.php:181
+#: classes/Options.php:145 classes/Options.php:177
 msgid "AccessKey"
 msgstr "アクセスキーID"
 
-#: classes/Options.php:155 classes/Options.php:194
+#: classes/Options.php:151 classes/Options.php:190
 msgid "Secret"
 msgstr "シークレットアクセスキー"
 
-#: classes/Options.php:161 classes/Options.php:206
+#: classes/Options.php:157 classes/Options.php:202
 msgid "Bucket"
 msgstr "バケット"
 
-#: classes/Options.php:181 classes/Options.php:194 classes/Options.php:206
+#: classes/Options.php:177 classes/Options.php:190 classes/Options.php:202
 #, php-format
 msgid "%s is too long."
 msgstr "%sが長すぎます"
 
-#: classes/Options.php:225 wp-cli.php:28
+#: classes/Options.php:221 wp-cli.php:30
 msgid "API Token Authentication error"
 msgstr "入力されたAPIトークンでの認証に失敗しました"
 
@@ -58,8 +58,8 @@ msgstr ""
 "アカウントをお持ちでない場合は会員登録を行ってください。"
 
 #: tpl/setting.php:8
-msgid "https://secure.sakura.ad.jp/member-regist/input"
-msgstr "https://secure.sakura.ad.jp/member-regist/input"
+msgid "https://secure.sakura.ad.jp/signup3/member-register/input.html"
+msgstr "https://secure.sakura.ad.jp/signup3/member-register/input.html"
 
 #: tpl/setting.php:9
 msgid "signup"
@@ -119,29 +119,32 @@ msgstr ""
 "オブジェクトストレージにファイルをアップロードした後、WordPressサーバ上のファ"
 "イルを削除します。"
 
-#: wp-cli.php:37
+#: wp-cli.php:39
 msgid "Uploaded all images to ObjectStorage."
 msgstr "アップロードが完了しました"
 
-#: wp-sacloud-ojs.php:64
+#: wp-sacloud-ojs.php:65
 msgid "ObjectStorage settings is incompleted"
 msgstr "オブジェクトストレージの設定が完了していません。"
 
-#: wp-sacloud-ojs.php:64 wp-sacloud-ojs.php:80
+#: wp-sacloud-ojs.php:65 wp-sacloud-ojs.php:81
 msgid "Settings"
 msgstr "設定"
 
-#: wp-sacloud-ojs.php:87
+#: wp-sacloud-ojs.php:88
 msgid "ObjectStorage"
 msgstr "オブジェクトストレージ"
 
-#: wp-sacloud-ojs.php:129
+#: wp-sacloud-ojs.php:130
 msgid "Connection was Successfully."
 msgstr "接続に成功しました"
 
-#: wp-sacloud-ojs.php:136
+#: wp-sacloud-ojs.php:137
 msgid "Connection Error"
 msgstr "接続に失敗しました"
+
+#~ msgid "https://secure.sakura.ad.jp/member-regist/input"
+#~ msgstr "https://secure.sakura.ad.jp/member-regist/input"
 
 #~ msgid "Uploading all images to ObjectStorage."
 #~ msgstr "全ての画像をオブジェクトストレージにアップロードします。"
