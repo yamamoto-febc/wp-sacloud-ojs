@@ -355,9 +355,11 @@ function __generate_object_name_from_path($path)
 
     $dir = wp_upload_dir();
     $name = basename($path);
-    $name = str_replace($dir['basedir'] . DIRECTORY_SEPARATOR, '', $name);
 
-    $prefix = str_replace($dir['basedir'] . DIRECTORY_SEPARATOR, '', $dir['path']) . DIRECTORY_SEPARATOR;
+    // strip left(wp_upload_dir:basedir)
+    $prefix = str_replace($dir['basedir'] . DIRECTORY_SEPARATOR, '', $path);
+    // string right(filename)
+    $prefix = str_replace(DIRECTORY_SEPARATOR. $name, '', $prefix) . DIRECTORY_SEPARATOR;
 
     $container_name = Wp_Sacloud_Ojs\Options::$Instance->Container;
     if ($container_name != "") {
@@ -371,9 +373,13 @@ function __generate_object_name_from_url($url)
 {
 
     $dir = wp_upload_dir();
-    $name = str_replace($dir['url'] . DIRECTORY_SEPARATOR , '' , $url);
+    $pi = pathinfo($url);
+    $name = $pi['basename'];
 
-    $prefix = str_replace($dir['baseurl'] . DIRECTORY_SEPARATOR, '', $dir['url']) . DIRECTORY_SEPARATOR;
+    // strip left(wp_upload_dir:baseurl)
+    $prefix = str_replace($dir['baseurl'] . DIRECTORY_SEPARATOR, '', $url) ;
+    // strip right(filename)
+    $prefix = str_replace(DIRECTORY_SEPARATOR . $name, '', $prefix) . DIRECTORY_SEPARATOR;
 
     $container_name = Wp_Sacloud_Ojs\Options::$Instance->Container;
     if ($container_name != "") {
