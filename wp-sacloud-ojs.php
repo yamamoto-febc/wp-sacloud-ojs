@@ -226,13 +226,15 @@ function sacloudojs_upload_file($file_id)
 // Upload thumbnails
 function sacloudojs_thumb_upload($metadatas)
 {
-    if (!isset($metadatas['sizes'])) {
+    if (!isset($metadatas['sizes'])  || !isset($metadatas['file'])) {
         return $metadatas;
     }
 
     $dir = wp_upload_dir();
+    $base_file = $dir['basedir'] . DIRECTORY_SEPARATOR . $metadatas['file'];
+    $upload_dir = dirname($base_file);
     foreach ($metadatas['sizes'] as $thumb) {
-        $file = $dir['path'] . DIRECTORY_SEPARATOR . $thumb['file'];
+        $file = $upload_dir . DIRECTORY_SEPARATOR . $thumb['file'];
         if (!__upload_object($file)) {
             throw new Exception("upload error");
         }
