@@ -499,9 +499,12 @@ function __get_object_store_service($accessKey = null, $secret = null, $bucket =
         }
 
         $client = S3Client::factory(array(
-            'key' => $accessKey,
-            'secret' => $secret,
-            'base_url' => Wp_Sacloud_Ojs\Options::$Instance->getObjectStorageHostURL($useSSL)
+            'key'      => $accessKey,
+            'secret'   => $secret,
+            'base_url' => Wp_Sacloud_Ojs\Options::$Instance->getObjectStorageHostURL($useSSL),
+            'http'     => [
+                'verify' => ABSPATH . WPINC . '/certificates/ca-bundle.crt',
+            ]
         ));
 
         try {

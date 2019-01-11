@@ -5,7 +5,8 @@ FROM wordpress:latest
 
 MAINTAINER Kazumichi Yamamoto <yamamoto.febc@gmail.com>
 
-RUN apt-get update && apt-get install -y git subversion wget mysql-client
+RUN apt-get update && apt-get install -y git vim
+RUN a2enmod headers
 ADD debug/wp-config.php /var/www/html/wp-config.php
 ADD https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar /usr/local/bin/wp
 RUN chmod +x /usr/local/bin/wp
