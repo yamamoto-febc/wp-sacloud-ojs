@@ -3,8 +3,8 @@ Contributors: yamamotofebc
 Donate link:
 Tags: SakuraCloud, object storage, さくらのクラウド, さくらインターネット, オブジェクトストレージ
 Requires at least: 4.5.3
-Tested up to: 4.8-RC1
-Stable tag: 0.0.10
+Tested up to: 5.0.3
+Stable tag: 0.0.11
 License: GPLv2 or later.
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
